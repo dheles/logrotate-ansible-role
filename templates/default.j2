@@ -1,0 +1,11 @@
+{{ item.path }}/{{ item.file | default(logrotate_default_file) }} {
+{% if item.options is defined %}
+{% for option in item.options %}
+  {{ option }}
+{% endfor %}
+{% else %}
+{% for option in logrotate_default_options %}
+  {{ option }}
+{% endfor %}
+{% endif %}
+}

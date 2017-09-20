@@ -1,2 +1,27 @@
 ---
-# tasks file for logrotate
+- name: install required packages
+  package:
+    name  : "{{ item }}"
+    state : installed
+  with_items:
+    - "logrotate"
+
+- name: ensure selinux python installed
+  package :
+    name  : "{{ item }}"
+    state : installed
+  with_items:
+   - "libselinux-python"
+   - "policycoreutils-python"
+  become: true
+
+- name: configure logrotate
+  template :
+    src  : default.j2
+    dest : "/etc/logrotate.d/{{ item.name }}"
+  with_items: "{{ logrotate_configs }}"
+  become: true
+
+- name: adjust selinux context
+  include: selinux_context.yml
+  with_items: "{{ logrotate_configs }}"

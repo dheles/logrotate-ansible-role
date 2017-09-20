@@ -1,0 +1,19 @@
+- name: make sure log dir exists
+  stat:
+    path: "{{ item.path }}"
+  register: logdir
+
+- name: set selinux context on log dir
+  sefcontext:
+    target: "{{ item.path }}(/.*)?"
+    setype: var_log_t
+    reload: True
+    state: present
+  register: log_se_context
+  when: logdir.stat.exists
+  become: true
+
+- name: fix the selinux context for directory
+  shell: restorecon -R -v "{{ item.path }}"
+  when: log_se_context.changed and logdir.stat.exists
+  become: true

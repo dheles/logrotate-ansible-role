@@ -33,4 +33,4 @@ CC0
 Author Information
 ------------------
 
-Drew Heles
+Drew Heles & Farooq Sadiq
