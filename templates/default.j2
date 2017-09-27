@@ -8,4 +8,11 @@
   {{ option }}
 {% endfor %}
 {% endif %}
+{% if item.scripts is defined %}
+{% for script in item.scripts %}
+  {{ script.name }}
+    {{ script.script | indent(4,false) }}
+  endscript
+{% endfor %}
+{% endif %}
 }
