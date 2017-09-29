@@ -29,3 +29,4 @@ logrotate_configs:
     # rotate_ifempty: false
     # shred: true
     # sharedscripts: true
+  - "sharedscripts"
