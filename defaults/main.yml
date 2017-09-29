@@ -30,3 +30,4 @@ logrotate_configs:
     # shred: true
     # sharedscripts: true
   - "sharedscripts"
+logrotate_configs: []
