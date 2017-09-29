@@ -31,3 +31,9 @@ logrotate_configs:
     # sharedscripts: true
   - "sharedscripts"
 logrotate_configs: []
+  # - name: "httpd"
+  #   path: "/var/log/httpd"
+  #   # setype: "httpd_log_t" # already set by apache by default
+  #   scripts:
+  #     - name: "postrotate"
+  #       script: "/sbin/service httpd reload > /dev/null 2>/dev/null || true"
