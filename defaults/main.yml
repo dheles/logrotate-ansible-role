@@ -1,5 +1,5 @@
 ---
-logrotate_default_file:     "*.log"
+logrotate_default_file:     "*log"
 logrotate_default_options:
   - "daily"
   - "rotate 30"
