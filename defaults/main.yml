@@ -8,27 +8,6 @@ logrotate_default_options:
   - "delaycompress"
   - "missingok"
   - "notifempty"
-logrotate_configs:
-  - name: "cron"
-    path: "/var/log"
-    file: "cron"
-    # options: []
-    # scripts: []
-      # - name: # prerotate | postrotate | firstaction | lastaction
-      # - script:
-    # frequency: "daily" # hourly | daily | weekly | monthly | yearly
-    # rotate_count: 7
-    # size: "100M" # x [bytes] | k | M | G
-    # compress: true
-    # delaycompress: true
-    # create: true
-    # create_mode:  644
-    # create_owner: "catalyst"
-    # create_group: "catalyst"
-    # missingok: true
-    # rotate_ifempty: false
-    # shred: true
-    # sharedscripts: true
   - "sharedscripts"
 logrotate_configs: []
   # - name: "httpd"
