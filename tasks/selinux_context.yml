@@ -6,14 +6,14 @@
 - name: set selinux context on log dir
   sefcontext:
     target: "{{ item.path }}(/.*)?"
-    setype: var_log_t
-    reload: True
+    setype: "{{ item.setype }}"
+    reload: true
     state: present
   register: log_se_context
-  when: logdir.stat.exists
+  when: logdir.stat.exists and item.setype is defined
   become: true
 
 - name: fix the selinux context for directory
   shell: restorecon -R -v "{{ item.path }}"
-  when: log_se_context.changed and logdir.stat.exists
+  when: log_se_context.changed
   become: true
